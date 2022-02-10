@@ -10,7 +10,6 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-
 app.get("/api/products", async(req, res) =>{  
   const fetchExtendInfo = async(code) =>{
     const batchQuantity = await client.query("SELECT batch_quantity FROM number_of_batch  WHERE product_code =$1",[code]);
@@ -56,6 +55,27 @@ app.get("/api/products", async(req, res) =>{
   fetchProductsInfo(products).then(a => res.json((a)));
 });
 
+app.post('/order', async(req, res) => {
+  // create new order
+  try {
+    const date_of_order = new Date();
+    const data = req.body;
+    const order_info = await client.query("INSERT INTO orders (date_of_order) VALUES ($1) RETURNING order_code",[date_of_order]);
+    const order_code = order_info.rows[0].order_code
+    res.json('Order was created');
+    try {
+      // insert data into table products_orders
+      const Promises = data.map(item => {
+        client.query("INSERT INTO products_orders (order_code, product_code, batch_size_code, batch_size, batch_quantity) VALUES($1,$2,$3,$4,$5)",[order_code,item.product_code,item.batch_size_code, item.batch_size, item.batch_quantity])
+      })
+      await Promise.all(Promises);
+    } catch (err) {
+      console.log(error);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(config.PORT, () => {
     logger.info(`Server is running on port ${config.PORT}`);
