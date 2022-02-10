@@ -9,8 +9,8 @@ const Header = () =>{
                 <p className="header-title">Order our products</p>        
                 <p className="header-subtitle">Just choose and leave the rest for us!</p>
             </div>
-            <Link to='/'><FaHome/></Link>
-            <Link to='/order'><FaShoppingCart/>{order.length === 0? null: order.length}</Link>
+            <Link to='/' className="nav-links"><FaHome/> Home </Link>
+            <Link to='/order' className="nav-links"><FaShoppingCart/>{order.length === 0? null: order.length} Your cart</Link>
         </header>
     )
 }

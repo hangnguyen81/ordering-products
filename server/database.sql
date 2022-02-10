@@ -4,7 +4,7 @@ Database name: ijctmbnv
 */
 
 -- Table: products
-DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS products CASCADE;
 
 CREATE TABLE products (
     product_code VARCHAR(5) PRIMARY KEY,
@@ -20,13 +20,13 @@ VALUES ('P1','Milk', 1.99),
        ('P5','Buttermilk',3.1);
 
 -- Table: number_of_batch
-DROP TABLE IF EXISTS number_of_batch;
+DROP TABLE IF EXISTS number_of_batch CASCADE;
 
 CREATE TABLE number_of_batch (
     product_code VARCHAR(5) PRIMARY KEY,
     batch_quantity INT,
     FOREIGN KEY (product_code)
-      REFERENCES products (product_code),
+      REFERENCES products (product_code)
 );
 
 INSERT INTO number_of_batch (product_code, batch_quantity)
@@ -36,12 +36,13 @@ VALUES  ('P1',20),
         ('P4', 234);
 
 -- Table: batch_size
-DROP TABLE IF EXISTS batch_size;
+DROP TABLE IF EXISTS batch_size CASCADE;
 
 CREATE TABLE batch_size(
     batch_size_code VARCHAR(5) PRIMARY KEY,
     size INT
-)
+);
+
 INSERT INTO batch_size (batch_size_code, size)
 VALUES  ('BS1', 20),
         ('BS2', 30),
@@ -82,15 +83,15 @@ CREATE TABLE orders (
 );
 
 INSERT INTO orders (date_of_order)
-VALUES ('2022-02-08')
+VALUES ('2022-02-08');
 
 --Table: products_orders
 DROP TABLE IF EXISTS products_orders CASCADE;
 
 CREATE TABLE products_orders(
-    order_code SERIAL NOT NULL,
+    order_code INT NOT NULL,
     product_code VARCHAR(5) NOT NULL,
-    batch_size_code VARCHAR(5) NOT NULL,
+    batch_size_code VARCHAR(25) NOT NULL,
     batch_size INT NOT NULL,
     batch_quantity INT NOT NULL,
     PRIMARY KEY (order_code, product_code),

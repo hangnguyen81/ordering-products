@@ -1,0 +1,21 @@
+POST http://localhost:3003/order
+Content-Type: application/json
+
+[
+    {
+        "product_code": "P1",
+        "batch_quantity": 20,
+        "batch_size":29,
+        "batch_size_code": "BS6",
+        "product_name": "Milk",
+        "price_per_unit": "1.99"
+    },
+    {
+        "product_code": "P2",
+        "batch_quantity": 500,
+        "batch_size": 20,
+        "batch_size_code": "BS1",
+        "product_name": "Sour Milk",
+        "price_per_unit": "2.05"
+    }
+]

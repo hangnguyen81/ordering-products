@@ -73,7 +73,15 @@ body{
   color: var(--clr-grey);
   font-weight: var(--fw-light);
 }
-
+.nav-links{
+  color: var(--clr-dark);
+  font-size: var(--fs-h4);
+  text-decoration: none;
+  margin-right: 1rem;
+}
+.nav-links:visited{
+  color: var(--clr-dark);
+}
 .products{
   display: grid;
 }
@@ -159,7 +167,13 @@ button:focus{
   
 }
 /* Style for display data in table */
-#order-table{
+.table-title{
+  text-align: center;
+  font-size: var(--fs-h4);
+}
+
+#order-table, 
+.orderd-table{
   width: 100%;
   text-align: left;
   padding-top: .2em;

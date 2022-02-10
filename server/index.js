@@ -70,7 +70,7 @@ app.post('/order', async(req, res) => {
       })
       await Promise.all(Promises);
     } catch (err) {
-      console.log(error);
+      console.log(err);
     }
   } catch (error) {
     console.log(error);

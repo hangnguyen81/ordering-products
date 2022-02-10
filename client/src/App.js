@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import {Routes, Route} from 'react-router-dom';
 import ProductsList from './components/ProductsList';
 import Order from './components/Order';
-// import Filter from './components/Filter';
+
 
 function App() {
   return (
@@ -13,10 +13,6 @@ function App() {
         <Route exact path='/' element={<ProductsList/>} />
         <Route path='/order' element={<Order/>} />
       </Routes>
-      {/* <main className='products'>
-        <Filter/>
-        <ProductsList/>
-      </main> */}
       <Footer/>
     </div>
   );

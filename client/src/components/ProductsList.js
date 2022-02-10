@@ -8,9 +8,9 @@ const ProductsList = () => {
     if (products_loading)
         return <p>Loading</p>
     return(
-        <div className="products-grid">
+        <main className="products-grid">    
             { products.map((p,i) => <Product key={i} product={p}/>)}
-        </div>
+        </main>
     )
 }
 

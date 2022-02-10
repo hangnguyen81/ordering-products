@@ -2,9 +2,8 @@ import {
     GET_PRODUCTS_BEGIN,
     GET_PRODUCTS_SUCCESS,
     GET_PRODUCTS_ERROR,
-    UPDATE_FILTERS,
-    FILTER_PRODUCTS
-  } from '../actions';
+
+  } from '../utils/actions';
   
   const products_reducer = (state, action) => {
       switch (action.type) {
@@ -33,26 +32,6 @@ import {
             products_loading: false,
             products_error: true
           };
-        case UPDATE_FILTERS:
-          const { name, value } = action.payload;         
-          return {
-            ...state,
-            filters:{
-              ...state.filters,
-              [name]: value
-            }
-          }
-          case FILTER_PRODUCTS:
-            const {products} = state;
-            const {text, price} = state.filters;
-            let tempProducts = [...products];
-            if (text) {
-                tempProducts = tempProducts.filter((product) => {
-                  return product.product_name.toLowerCase().includes(text);
-                });
-            };
-            tempProducts = tempProducts.filter((product) => product.price_per_unit <= price);
-            return { ...state, filtered_products: tempProducts };
           default:
             throw new Error(`No Matching "${action.type}" - action type`);
       } 
