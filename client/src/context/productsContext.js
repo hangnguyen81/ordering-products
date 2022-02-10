@@ -1,17 +1,26 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useReducer } from 'react'
+import axios from 'axios';
+import React, { useContext, useEffect, useReducer } from 'react';
 import reducer from '../reducers/productsReducer';
-import { products_url as url } from '../utils/constants';
+import { products_url as url } from '../utils';
 import {
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS
 } from '../actions';
 
 const initialState = {
   products_loading: false,
   products_error: false,
-  products: []
+  products: [],
+  filtered_products: [],
+  filters: {
+    text: '',
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+  }
 };
 
 const ProductsContext = React.createContext();
@@ -23,8 +32,8 @@ export const ProductsProvider = ({ children }) => {
     dispatch({type: GET_PRODUCTS_BEGIN});
     try {
       const response = await axios.get(url);
-      const products = response.data
-      dispatch({type:GET_PRODUCTS_SUCCESS, payload: products});
+      const data = response.data
+      dispatch({type:GET_PRODUCTS_SUCCESS, payload: data});
     } catch (error) {
       dispatch({type:GET_PRODUCTS_ERROR});
     }
@@ -34,10 +43,24 @@ export const ProductsProvider = ({ children }) => {
     fetchProducts(url);
   },[]);
 
+  useEffect(() => {
+    dispatch({type: FILTER_PRODUCTS})
+  },[state.filters]);
+
+  const updateFilters = (e) => {  
+    let name = e.target.name;
+    let value = e.target.value
+    dispatch({type: UPDATE_FILTERS, payload: { name: value} })
+  };
+
+  const clearFilters = () => {};
+
   return (
     <ProductsContext.Provider 
       value={{
-        ...state
+        ...state,
+        updateFilters,
+        clearFilters
       }}
     >
       {children}
@@ -46,5 +69,5 @@ export const ProductsProvider = ({ children }) => {
 }
 
 export const useProductsContext = () => {
-  return useContext(ProductsContext)
+  return useContext(ProductsContext);
 }

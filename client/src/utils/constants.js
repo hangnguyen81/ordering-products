@@ -1,1 +1,0 @@
-export const products_url = 'http://localhost:3003/api/products';
