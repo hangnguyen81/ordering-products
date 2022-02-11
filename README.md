@@ -1,5 +1,7 @@
 # Home assignment: Produce order for given products 
 
+View demo from here: https://warm-wildwood-54711.herokuapp.com/
+
 ## Features of App
 - [x] Compute order for each given products with all required rules
 - [x] Display products and related information from database
