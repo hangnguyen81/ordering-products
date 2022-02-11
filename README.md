@@ -39,6 +39,7 @@ PORT=3003
 ````
 * Run the project: `nodemon index`
 * Open web browser (prefer Chrome) [http://localhost:3003](http://localhost:3003) to view it in your browser
+
 **I already sent my own .env file to you, so you can use my ElephantSQL instance to run the app**
 
 ## Tests
