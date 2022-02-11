@@ -1,6 +1,6 @@
 import React, {  useContext, useReducer, useEffect } from 'react';
 import reducer from '../reducers/ordersReducer';
-import { order_url as url } from '../utils';
+import { order_url as url } from '../utils/constants';
 import axios from 'axios';
 import {
   ADD_TO_ORDER,
@@ -11,50 +11,50 @@ import {
 } from '../utils/actions';
 
 const getLocalStorage = () => {
-  let order = localStorage.getItem('order')
+  let order = localStorage.getItem('order');
   if (order) {
-    return JSON.parse(localStorage.getItem('order'))
+    return JSON.parse(localStorage.getItem('order'));
   } else {
-    return []
+    return [];
   }
 }
 
 const initialState = {
   order: getLocalStorage(),
   placed_order:[]
-}
+};
 
-const OrderContext = React.createContext()
+const OrderContext = React.createContext();
 
 export const OrderProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const addToOrder = (product) => {
     dispatch({ type: ADD_TO_ORDER, payload: product })
-  }
+  };
 
   const removeFromOrder = (id) =>{
     dispatch({type: REMOVE_FROM_ORDER, payload: id})
-  }
+  };
 
   const clearOrder = () => {
     dispatch({ type: CLEAR_ORDER })
-  }
+  };
 
   const clearCart = () => {
     dispatch({ type: CLEAR_CART})
-  }
+  };
 
   const placeOrder = async(maxBatch) =>{
     const data = state.order;
     const orderItems = computeOrder(data, maxBatch);
     await axios.post(url, orderItems);
     dispatch({type: PLACE_ORDER, payload: orderItems})
-  }
+  };
 
   useEffect(() => {
     localStorage.setItem('order', JSON.stringify(state.order))
-  }, [state.order])
+  }, [state.order]);
 
   return (
     <OrderContext.Provider
@@ -77,7 +77,7 @@ export const useOrderContext = () => {
 
 export const computeOrder = (data, maxBatch) => {
   const listOfItems = data.map(item => {
-    let correctBatch
+    let correctBatch;
     if (maxBatch)
       correctBatch = item.batch_size.reduce((max, obj) => (max.size > obj.size) ? max : obj);
     else
@@ -89,7 +89,7 @@ export const computeOrder = (data, maxBatch) => {
         batch_size_code: correctBatch.batch_size_code,
         batch_size: correctBatch.size,
         batch_quantity: item.batch_quantity
-    }
+    };
   });
   return listOfItems;
 }  
