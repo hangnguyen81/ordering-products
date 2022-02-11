@@ -1,4 +1,10 @@
-# Home assignment: Produce order for given products 
+# Home assignment: Produce order for given products
+
+## Description
+* Created an API to provide data as input (https://warm-wildwood-54711.herokuapp.com/api/products) with the criteria of **default batch_size** and **number of batches**
+* Created UI to chose products, to determine whether to use max or min batches in the order
+* When press Place order, the function **computeOrder** will produce an order based on criteria of max or min batch.
+* Data of order also saves in database 
 
 ## Features of App
 - [x] Compute order for each given products with all required rules
@@ -25,7 +31,7 @@ This project was built with PERN tech stack (Postgresql, Express, React and Node
 
 ### Build frontend into production
 * Go to **client** folder
-* Run `npm install` to to install all dependencies 
+* Run `npm install` to install all dependencies 
 * Run command `npm run build` to build the frontend UI for production to the build folder.
 * Copy/paste **build** folder to **server** folder
 
