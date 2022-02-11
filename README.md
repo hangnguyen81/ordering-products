@@ -1,12 +1,11 @@
 # Home assignment: Produce order for given products
+View demo from here: https://warm-wildwood-54711.herokuapp.com/
 
 ## Description
 * Created an API to provide data as input (https://warm-wildwood-54711.herokuapp.com/api/products) with the criteria of **default batch_size** and **number of batches**
 * Created UI to chose products, to determine whether to use max or min batches in the order
 * When press Place order, the function **computeOrder** will produce an order based on criteria of max or min batch.
 * Data of order also saves in database 
-
-View demo from here: https://warm-wildwood-54711.herokuapp.com/
 
 ## Features of App
 - [x] Compute order for each given products with all required rules
