@@ -6,6 +6,8 @@
 * When press Place order, the function **computeOrder** will produce an order based on criteria of max or min batch.
 * Data of order also saves in database 
 
+View demo from here: https://warm-wildwood-54711.herokuapp.com/
+
 ## Features of App
 - [x] Compute order for each given products with all required rules
 - [x] Display products and related information from database
@@ -45,6 +47,7 @@ PORT=3003
 ````
 * Run the project: `nodemon index`
 * Open web browser (prefer Chrome) [http://localhost:3003](http://localhost:3003) to view it in your browser
+
 **I already sent my own .env file to you, so you can use my ElephantSQL instance to run the app**
 
 ## Tests
