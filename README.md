@@ -51,11 +51,14 @@ PORT=3003
 
 ## Demo pictures of app
 First view - choose products
+
 ![choose products](https://i.ibb.co/qMkn9pc/1.jpg)
 
 Cart with chosen products
+
 ![Cart with chosen products](https://i.ibb.co/Ctcbcbq/2.jpg)
 
 Order when using max batch
+
 ![Order when using max batch](https://i.ibb.co/1L80Xxd/3.jpg)
 
