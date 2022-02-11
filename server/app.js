@@ -10,11 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-app.get("/products", async(req, res) => {
-  let products = await client.query("select * from products");
-  products = products.rows;
-  res.json(products);
-});
+
 app.get("/api/products", async(req, res) =>{  
   const fetchExtendInfo = async(code) =>{
     const batchQuantity = await client.query("SELECT batch_quantity FROM number_of_batch  WHERE product_code =$1",[code]);
