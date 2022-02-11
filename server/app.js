@@ -7,6 +7,7 @@ const client = require('./connect_db');
 
 //middleware
 app.use(cors());
+app.use(express.static('build'));
 app.use(express.json());
 
 //routes
