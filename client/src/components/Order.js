@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { useOrderContext } from "../context/ordersContext";
+import { RiDeleteBin2Line } from 'react-icons/ri';
 const Order = () => {
-    const {order, placed_order, clearCart, placeOrder, clearOrder} = useOrderContext();
+    const {order, placed_order, clearCart, placeOrder, clearOrder, removeFromOrder} = useOrderContext();
     const [maxBatch, setMaxBatch] = useState(true);
 
     if (order.length === 0)
@@ -42,6 +43,7 @@ const Order = () => {
           <tbody>
             <tr>
               <th>#</th>
+              <th>Remove</th>
               <th>Product Code</th>
               <th>Product Name</th>              
               <th>Batch size</th>
@@ -50,6 +52,7 @@ const Order = () => {
             </tr>
             { order.map((item,i) => <tr key={i}>
                 <td>{i+1}</td>
+                <td onClick={() => removeFromOrder(item.product_code)} className='delele-icon'><RiDeleteBin2Line/></td>
                 <td>{item.product_code}</td>
                 <td>{item.product_name}</td>                
                 <td>{item.batch_size.map(item => item.size + '  ' )}</td>

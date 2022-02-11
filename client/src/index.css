@@ -82,6 +82,14 @@ body{
 .nav-links:visited{
   color: var(--clr-dark);
 }
+
+.move-up{
+  position: relative;
+  top: -10px;
+  font-size: var(--fs-subtitle);
+  color: darkred;
+}
+
 .products{
   display: grid;
 }
@@ -93,42 +101,8 @@ body{
 }
 }
 
-/* Filter form style */
-.products-filter{
-  width: 100%;
-  padding-top: .2em;
-  display: flex;
-  flex-direction: column;
-}
 
-.price {
-  margin-bottom: 0.25rem;
-}
-
-input{
-  padding: .3rem;
-}
-
-input:focus{
-  outline: none;
-}
-
-button{
-  width: fit-content;
-  background-color: var(--clr-dark);
-  color: var(--clr-light);
-  border-radius: var(--radius);
-  cursor: pointer;
-  border: 0;
-  padding: .5rem;
-  margin-left: 1rem;
-}
-
-button:hover,
-button:focus{
-  background-color: var(--clr-grey);
-}
-/*Products list*/
+/*Products*/
 .products-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -208,17 +182,27 @@ button:focus{
   font-size: var(--fs-body);
   color: var(--clr-light-grey);
 }
-.error{
-  margin-top: 1rem;
-  color: red;
-}
-
-.loading{
-  font-size: var(--fs-h3);
+.delele-icon{
+  font-size: var(--fs-h4);
   text-align: center;
-  margin-top: 2rem;
+  cursor: pointer;
 }
 
+button{
+  width: fit-content;
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 0;
+  padding: .5rem;
+  margin-left: 1rem;
+}
+
+button:hover,
+button:focus{
+  background-color: var(--clr-grey);
+}
 /* Footer */
 footer{
   color: var(--clr-grey);

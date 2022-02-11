@@ -10,7 +10,7 @@ const Header = () =>{
                 <p className="header-subtitle">Just choose and leave the rest for us!</p>
             </div>
             <Link to='/' className="nav-links"><FaHome/> Home </Link>
-            <Link to='/order' className="nav-links"><FaShoppingCart/>{order.length === 0? null: order.length} Your cart</Link>
+            <Link to='/order' className="nav-links"><FaShoppingCart/><span className="move-up">{order.length === 0? null: order.length}</span> Your cart</Link>
         </header>
     )
 }

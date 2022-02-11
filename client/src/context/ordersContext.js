@@ -75,7 +75,7 @@ export const useOrderContext = () => {
   return useContext(OrderContext);
 }
 
-const computeOrder = (data, maxBatch) => {
+export const computeOrder = (data, maxBatch) => {
   const listOfItems = data.map(item => {
     let correctBatch
     if (maxBatch)

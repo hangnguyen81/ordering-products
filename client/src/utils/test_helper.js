@@ -1,0 +1,38 @@
+export const data = [
+    {
+        "product_code":"P2",
+        "batch_quantity":500,
+        "batch_size":[
+            {
+                "batch_size_code":"BS1",
+                "size":20
+            },
+            {
+                "batch_size_code":"BS2",
+                "size":30
+            },
+            {
+                "batch_size_code":"BS3",
+                "size":40
+            }
+        ],
+        "product_name":"Sour Milk",
+        "price_per_unit":"2.05"
+    },
+    {
+        "product_code":"P3",
+        "batch_quantity":40,
+        "batch_size":[
+            {
+                "batch_size_code":"BS4",
+                "size":50
+            },
+            {
+                "batch_size_code":"BS5",
+                "size":100
+            }
+        ],
+        "product_name":"Cream",
+        "price_per_unit":"3.59"
+    }
+]
