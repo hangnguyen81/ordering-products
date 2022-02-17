@@ -29,6 +29,10 @@ const OrderContext = React.createContext();
 export const OrderProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    localStorage.setItem('order', JSON.stringify(state.order))
+  }, [state.order]);
+
   const addToOrder = (product) => {
     dispatch({ type: ADD_TO_ORDER, payload: product })
   };
@@ -51,10 +55,6 @@ export const OrderProvider = ({ children }) => {
     await axios.post(url, orderItems);
     dispatch({type: PLACE_ORDER, payload: orderItems})
   };
-
-  useEffect(() => {
-    localStorage.setItem('order', JSON.stringify(state.order))
-  }, [state.order]);
 
   return (
     <OrderContext.Provider
@@ -79,9 +79,9 @@ export const computeOrder = (data, maxBatch) => {
   const listOfItems = data.map(item => {
     let correctBatch;
     if (maxBatch)
-      correctBatch = item.batch_size.reduce((max, obj) => (max.size > obj.size) ? max : obj);
+      correctBatch = item.batch_size.reduce((max, obj) => (max.size > obj.size) ? max : obj, {});
     else
-      correctBatch = item.batch_size.reduce((min, obj) => (min.size < obj.size) ? min : obj);
+      correctBatch = item.batch_size.reduce((min, obj) => (min.size < obj.size) ? min : obj, {});
     return {
         product_code: item.product_code,
         product_name: item.product_name,

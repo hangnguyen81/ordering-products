@@ -14,15 +14,16 @@ app.use(express.json());
 
 app.get("/api/products", async(req, res) =>{  
   const fetchExtendInfo = async(code) =>{
-    const batchQuantity = await client.query("SELECT batch_quantity FROM number_of_batch  WHERE product_code =$1",[code]);
+
     let quantity;
+    const batchQuantity = await client.query("SELECT batch_quantity FROM number_of_batch  WHERE product_code =$1",[code]);  
     if (batchQuantity.rows.length === 0)
       quantity = 1;
     else  
       quantity = batchQuantity.rows[0].batch_quantity;
 
-    const batchSizeData = await client.query("SELECT a.batch_size_code, size FROM batch_size a, products_batch_size b WHERE a.batch_size_code = b.batch_size_code AND b.product_code =$1",[code]);
     let batchSize;
+    const batchSizeData = await client.query("SELECT a.batch_size_code, size FROM batch_size a, products_batch_size b WHERE a.batch_size_code = b.batch_size_code AND b.product_code =$1",[code]);
     if (batchSizeData.rows.length === 0)
         batchSize = [{
           batch_size_code: `BS_GENERATED_${code}`, 
