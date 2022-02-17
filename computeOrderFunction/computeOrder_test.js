@@ -1,3 +1,5 @@
+/*
+//old code
 const computeOrder = (products, number_of_batch, products_batch_size, batch_size, maxBatch=true) => {    
     const listOfItems = products.map(product => {
         let batch_quantity
@@ -45,4 +47,4 @@ const computeOrder = (products, number_of_batch, products_batch_size, batch_size
 
 module.exports = computeOrder;
 
-
+*/
